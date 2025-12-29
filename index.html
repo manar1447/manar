@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مقياس منار للتميز التربوي | لوحة التقييم التفاعلي</title>
+    <title>مقياس منار للتميز التربوي</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Tajawal', sans-serif; background-color: #f8fafc; }
+        body { font-family: 'Tajawal', sans-serif; background-color: #f8fafc; scroll-behavior: smooth; }
         
         /* Custom Range Slider Styling */
         input[type=range] {
@@ -40,13 +40,6 @@
             border-radius: 4px;
         }
 
-        .sticky-dashboard {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            transition: all 0.3s ease;
-        }
-        
         .score-card {
             transition: all 0.3s ease;
         }
@@ -54,192 +47,423 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
+
+        /* Triangle Animation */
+        .triangle-container {
+            position: relative;
+            width: 320px;
+            height: 280px;
+            margin: 0 auto;
+        }
+        .triangle-path {
+            fill: none;
+            stroke: #0d9488;
+            stroke-width: 4;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.1));
+            animation: pulse-border 3s infinite;
+        }
+        .triangle-node {
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        .triangle-node:hover circle {
+            fill: #f59e0b;
+            r: 14;
+        }
+        .triangle-node text {
+            font-family: 'Tajawal', sans-serif;
+            font-weight: bold;
+            font-size: 14px;
+            fill: #1e293b;
+        }
+        
+        @keyframes pulse-border {
+            0% { stroke: #0d9488; stroke-width: 4; }
+            50% { stroke: #14b8a6; stroke-width: 5; }
+            100% { stroke: #0d9488; stroke-width: 4; }
+        }
+
+        /* Tabs Styling */
+        .tab-btn {
+            position: relative;
+            outline: none;
+        }
+        .tab-btn.active {
+            color: #0f766e;
+            font-weight: 800;
+        }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #0f766e;
+            border-radius: 3px 3px 0 0;
+        }
     </style>
 </head>
 <body class="text-slate-800">
 
     <!-- Header Section -->
-    <header class="bg-gradient-to-r from-teal-900 to-teal-700 text-white pb-12 pt-8 shadow-lg">
-        <div class="container mx-auto px-4 max-w-5xl">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+    <header class="bg-gradient-to-r from-teal-900 to-teal-700 text-white pb-16 pt-10 shadow-lg relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMSI+PHBhdGggZD0iTTAgNDBMNDAgMEw4MCA0MEw0MCA4MHoiLz48L3N2Zz4=')]"></div>
+        <div class="container mx-auto px-4 max-w-6xl relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                 <div>
-                    <h1 class="text-3xl md:text-4xl font-extrabold mb-2">مقياس منار للتميز التربوي</h1>
-                    <p class="text-teal-100 text-lg font-light">دليل المعايير والأداة التشخيصية - الإصدار المطور 2.0</p>
+                    <h1 class="text-4xl md:text-5xl font-extrabold mb-3 tracking-tight">مقياس منار للتميز التربوي</h1>
+                    <p class="text-teal-100 text-lg font-light max-w-2xl">مشروع تعظيم الأثر القيمي والمجتمعي للجهات التربوية والاجتماعية</p>
                 </div>
-                <div class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20 text-sm">
-                    أداة تشخيصية رشيقة (Lean Tool)
+                <div class="flex flex-col items-end gap-2">
+                    <div class="bg-white/10 backdrop-blur-md px-5 py-2 rounded-full border border-white/20 text-sm font-medium">
+                        أداة تشخيصية رشيقة (Lean Tool)
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <main class="container mx-auto px-4 max-w-5xl -mt-8 mb-16 relative z-10">
+    <main class="container mx-auto px-4 max-w-6xl -mt-10 mb-16 relative z-10">
         
-        <!-- Full Introduction Section (Detailed) -->
-        <section class="bg-white rounded-xl shadow-md overflow-hidden mb-8 border-t-4 border-teal-600">
-            <!-- Part 1: Definition & Context -->
-            <div class="p-6 md:p-8 border-b border-gray-100">
-                <h2 class="text-2xl font-bold text-teal-800 mb-4">أولاً: التعريف بالمقياس</h2>
-                <p class="text-slate-600 leading-relaxed mb-4">
-                    في ظل التحولات المتسارعة التي يشهدها القطاع غير الربحي، لم تعد "الجهود المبعثرة" كافية لضمان النجاح. برزت الحاجة الملحة لأداة قياس نوعية تتجاوز "رصد الأنشطة" التقليدي لتصل إلى "قياس الأثر" الحقيقي.
-                </p>
-                <p class="text-slate-600 leading-relaxed font-medium">
-                    يأتي "مقياس منار" كأداة تشخيصية رشيقة (Lean Tool)، صُممت خصيصاً لتقييم نضج الممارسات التربوية والإدارية في المؤسسات الخيرية، بهدف تعظيم العائد القيمي والمجتمعي.
-                </p>
-
-                <!-- ID Card -->
-                <div class="bg-slate-50 rounded-lg p-5 mt-6 border border-slate-200">
-                    <h3 class="font-bold text-slate-800 mb-3 flex items-center gap-2">
-                        <svg class="w-5 h-5 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" /></svg>
-                        بطاقة تعريف المقياس
-                    </h3>
-                    <ul class="space-y-2 text-sm text-slate-700">
-                        <li><strong class="text-teal-700">اسم الأداة:</strong> مقياس منار للتميز التربوي (Manar Educational Excellence Scale).</li>
-                        <li><strong class="text-teal-700">الغرض:</strong> أداة تشخيصية وتطويرية تهدف لتقييم نضج المؤسسات التربوية والاجتماعية، ونقلها من حيز التنفيذ العشوائي إلى التخطيط الاستراتيجي وقياس الأثر.</li>
-                    </ul>
-                </div>
+        <!-- Introduction & Philosophy Section -->
+        <section class="bg-white rounded-2xl shadow-xl overflow-hidden mb-10 border-t-4 border-teal-600">
+            
+            <!-- Tabs for Intro -->
+            <div class="flex border-b border-gray-200 bg-gray-50 overflow-x-auto whitespace-nowrap">
+                <button onclick="switchTab('tab-def')" class="tab-btn active px-6 py-4 font-medium text-gray-500 hover:bg-gray-50 transition" id="btn-tab-def">التعريف ونطاق العمل</button>
+                <button onclick="switchTab('tab-goals')" class="tab-btn px-6 py-4 font-medium text-gray-500 hover:bg-gray-50 transition" id="btn-tab-goals">الأهداف والعوائد</button>
+                <button onclick="switchTab('tab-phil')" class="tab-btn px-6 py-4 font-medium text-gray-500 hover:bg-gray-50 transition" id="btn-tab-phil">فلسفة البناء (المثلث القيمي)</button>
+                <button onclick="switchTab('tab-method')" class="tab-btn px-6 py-4 font-medium text-gray-500 hover:bg-gray-50 transition" id="btn-tab-method">آلية التطبيق</button>
             </div>
 
-            <!-- Part 2: Philosophy & Triangle -->
-            <div class="p-6 md:p-8 bg-gradient-to-br from-slate-50 to-white border-b border-gray-100">
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h3 class="font-bold text-lg text-slate-800 mb-3">فلسفة البناء وخارطة التوازن (المثلث القيمي)</h3>
-                        <p class="text-sm text-slate-600 mb-4 leading-relaxed">
-                            يتميز المقياس بأنه لا ينحاز للجانب الإداري الجاف على حساب الروح التربوية، ولا العكس. بل يعتمد فلسفة "المثلث القيمي" الذي يضمن توازن المؤسسة:
-                        </p>
-                        <ul class="space-y-3 text-sm">
-                            <li class="flex items-start gap-2">
-                                <span class="bg-indigo-100 text-indigo-700 font-bold px-2 py-0.5 rounded text-xs mt-0.5">1</span>
-                                <span class="text-slate-700"><strong>ضلع القيم (الروح):</strong> يضمن أن المؤسسة لم تتحول إلى "شركة" خالية من الروح، ويركز على عمق المضمون التربوي.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="bg-indigo-100 text-indigo-700 font-bold px-2 py-0.5 rounded text-xs mt-0.5">2</span>
-                                <span class="text-slate-700"><strong>ضلع النظم (الجسد):</strong> يضمن أن الحماس التربوي لا يتحول إلى فوضى، عبر استلهام نماذج التميز العالمية (EFQM).</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="bg-indigo-100 text-indigo-700 font-bold px-2 py-0.5 rounded text-xs mt-0.5">3</span>
-                                <span class="text-slate-700"><strong>ضلع الأثر (الثمرة):</strong> يضمن أن الجهد المبذول يصب في مصلحة المستفيد النهائي ويحدث تغييراً حقيقياً.</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-lg text-slate-800 mb-3">المرجعية المنهجية</h3>
-                        <p class="text-sm text-slate-600 mb-4">بُني المقياس وفق منهجية "المواءمة التكاملية" التي تجمع:</p>
-                        <div class="space-y-3">
-                            <div class="bg-white p-3 rounded border border-slate-200 shadow-sm text-sm">
-                                <strong class="text-teal-700 block mb-1">المعايير العالمية للجودة:</strong>
-                                يستلهم جوهر (ISO 21001:2018) ومنطق (EFQM 2020) في التركيز على النتائج المستدامة.
+            <div class="p-8 min-h-[350px]">
+                
+                <!-- Tab 1: Definition & Scope -->
+                <div id="tab-def" class="tab-content block animate-fade-in">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                                <span class="w-1 h-8 bg-teal-600 rounded-full block"></span>
+                                التعريف والمنطلقات
+                            </h2>
+                            <p class="text-slate-600 leading-loose mb-6 text-justify">
+                                في ظل التحولات المتسارعة، لم تعد <span class="font-bold text-red-500">"الجهود المبعثرة"</span> كافية لضمان النجاح. برزت الحاجة لأداة قياس نوعية تنقل المؤسسات من "رصد الأنشطة" إلى "قياس الأثر".
+                                <br><br>
+                                <strong>مقياس منار:</strong> أداة تشخيصية وتطويرية تهدف لتقييم نضج المؤسسات التربوية والاجتماعية، ونقلها من حيز التنفيذ العشوائي إلى التخطيط الاستراتيجي وقياس الأثر.
+                            </p>
+                            
+                            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm">
+                                <strong class="block text-slate-800 mb-2">مفاهيم أساسية:</strong>
+                                <ul class="space-y-2 text-slate-600">
+                                    <li><strong>الدور التربوي:</strong> كل ما تقوم به الجهة من ممارسات ونظم وخدمات لها أثر عند المستفيدين.</li>
+                                    <li><strong>الجهات المستهدفة:</strong> التي تتعامل تربوياً وتعليمياً واجتماعياً مع (الأطفال، الشباب، الفتيات).</li>
+                                </ul>
                             </div>
-                            <div class="bg-white p-3 rounded border border-slate-200 shadow-sm text-sm">
-                                <strong class="text-teal-700 block mb-1">الامتثال التنظيمي:</strong>
-                                يتوافق تماماً مع معايير الحوكمة الصادرة عن المركز الوطني لتنمية القطاع غير الربحي (NCNP).
-                            </div>
-                            <div class="bg-white p-3 rounded border border-slate-200 shadow-sm text-sm">
-                                <strong class="text-teal-700 block mb-1">العمق القيمي الأصيل:</strong>
-                                يحول "القيم" من شعارات إلى مؤشرات أداء سلوكية (KPIs) قابلة للقياس.
+                        </div>
+                        
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                                <span class="w-1 h-8 bg-teal-600 rounded-full block"></span>
+                                نطاق العمل
+                            </h2>
+                            <p class="text-slate-600 mb-4">يغطي المقياس أربعة مجالات حيوية تم دمجها في الهيكلية الحديثة:</p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:border-teal-500 transition cursor-default">
+                                    <div class="text-teal-600 font-bold mb-1">01 الاستراتيجية</div>
+                                    <div class="text-xs text-slate-500">لضمان التوجه القيمي</div>
+                                </div>
+                                <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:border-teal-500 transition cursor-default">
+                                    <div class="text-teal-600 font-bold mb-1">02 النظم واللوائح</div>
+                                    <div class="text-xs text-slate-500">لضمان الحوكمة التربوية</div>
+                                </div>
+                                <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:border-teal-500 transition cursor-default">
+                                    <div class="text-teal-600 font-bold mb-1">03 العاملين</div>
+                                    <div class="text-xs text-slate-500">لضمان القدوة والكفاءة</div>
+                                </div>
+                                <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:border-teal-500 transition cursor-default">
+                                    <div class="text-teal-600 font-bold mb-1">04 الخدمات</div>
+                                    <div class="text-xs text-slate-500">لضمان جودة الأثر</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Part 3: Why This Scale -->
-            <div class="p-6 md:p-8 bg-teal-50">
-                <h3 class="font-bold text-lg text-teal-900 mb-4">لماذا هذا المقياس؟</h3>
-                <div class="grid md:grid-cols-3 gap-4">
-                    <div class="bg-white p-4 rounded-lg shadow-sm">
-                        <strong class="block text-teal-700 mb-2">مختصر ومركز</strong>
-                        <p class="text-xs text-slate-600">يستهدف الـ 20% من العمليات الحيوية التي تحقق 80% من الأثر.</p>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg shadow-sm">
-                        <strong class="block text-teal-700 mb-2">موجه بالأثر</strong>
-                        <p class="text-xs text-slate-600">ينتقل من رصد "الجهود والأنشطة" إلى قياس "التغير والنواتج".</p>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg shadow-sm">
-                        <strong class="block text-teal-700 mb-2">أداة للتطوير</strong>
-                        <p class="text-xs text-slate-600">يوفر "خارطة حرارية" لنقاط القوة وفرص التحسين (لا للمحاسبة).</p>
+                <!-- Tab 2: Goals & Returns -->
+                <div id="tab-goals" class="tab-content hidden animate-fade-in">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-800 mb-4">أهداف المشروع</h2>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3 bg-white p-3 rounded-lg border border-gray-100 shadow-sm">
+                                    <span class="bg-teal-100 text-teal-700 w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold mt-0.5">1</span>
+                                    <span class="text-slate-700 text-sm">تطوير التوجهات الاستراتيجية للجهات التربوية بما يعظم أثرها القيمي.</span>
+                                </li>
+                                <li class="flex items-start gap-3 bg-white p-3 rounded-lg border border-gray-100 shadow-sm">
+                                    <span class="bg-teal-100 text-teal-700 w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold mt-0.5">2</span>
+                                    <span class="text-slate-700 text-sm">إعادة صياغة المنظومات القيمية بما يتواءم ودورها المرجعي.</span>
+                                </li>
+                                <li class="flex items-start gap-3 bg-white p-3 rounded-lg border border-gray-100 shadow-sm">
+                                    <span class="bg-teal-100 text-teal-700 w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold mt-0.5">3</span>
+                                    <span class="text-slate-700 text-sm">رفع مستوى تبني القيادات والعاملين للجوانب القيمية وترشيد ممارساتهم.</span>
+                                </li>
+                                <li class="flex items-start gap-3 bg-white p-3 rounded-lg border border-gray-100 shadow-sm">
+                                    <span class="bg-teal-100 text-teal-700 w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold mt-0.5">4</span>
+                                    <span class="text-slate-700 text-sm">تحقيق التكامل والتجانس القيمي بين الاستراتيجية والنظم والممارسات.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-100">
+                                <h3 class="font-bold text-indigo-800 mb-3 border-b border-indigo-200 pb-2">الآثار الاستراتيجية</h3>
+                                <ul class="text-sm text-slate-700 space-y-2 list-disc list-inside marker:text-indigo-500">
+                                    <li>تطوير استراتيجيات تهتم بالأولويات التربوية.</li>
+                                    <li>توفير بيئات معززة للقيم للعاملين والمستفيدين.</li>
+                                    <li>نشر الممارسات الإيجابية في أوساط المجتمع.</li>
+                                    <li>تقوية الدور التربوي والقيمي في القطاع الخيري.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-amber-50 rounded-xl p-5 border border-amber-100">
+                                <h3 class="font-bold text-amber-800 mb-3 border-b border-amber-200 pb-2">العوائد المباشرة</h3>
+                                <ul class="text-sm text-slate-700 space-y-2 list-disc list-inside marker:text-amber-500">
+                                    <li>تنمية الحس التربوي والقيمي لدى القيادات.</li>
+                                    <li>استقطاب الكوادر التربوية المتميزة وتفعيلها.</li>
+                                    <li>ابتكار وتطوير المناشط وفق الاحتياجات ذات الأولوية.</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Tab 3: Philosophy (Triangle) -->
+                <div id="tab-phil" class="tab-content hidden animate-fade-in">
+                    <div class="flex flex-col md:flex-row items-center gap-12">
+                        <div class="flex-1">
+                            <h2 class="text-2xl font-bold text-slate-800 mb-4">خارطة التوازن (المثلث القيمي)</h2>
+                            <p class="text-slate-600 mb-6 leading-relaxed">
+                                يعتمد المقياس فلسفة "المثلث القيمي" لضمان عدم طغيان الجانب الإداري الجاف على الروح التربوية، أو العكس. يتكون المثلث من ثلاثة أضلاع متكاملة:
+                            </p>
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-4 p-4 bg-white rounded-lg shadow-sm border-r-4 border-indigo-500 hover:bg-indigo-50 transition cursor-default group">
+                                    <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-200 transition">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-indigo-800">الروح (القيم)</div>
+                                        <div class="text-xs text-slate-600">يركز على عمق المضمون التربوي وروح العمل.</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-4 p-4 bg-white rounded-lg shadow-sm border-r-4 border-teal-500 hover:bg-teal-50 transition cursor-default group">
+                                    <div class="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 group-hover:bg-teal-200 transition">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-teal-800">الجسد (النظم)</div>
+                                        <div class="text-xs text-slate-600">يضمن الانضباط المؤسسي (EFQM) وعدم الفوضى.</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-4 p-4 bg-white rounded-lg shadow-sm border-r-4 border-amber-500 hover:bg-amber-50 transition cursor-default group">
+                                    <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 group-hover:bg-amber-200 transition">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-amber-800">الثمرة (الأثر)</div>
+                                        <div class="text-xs text-slate-600">يضمن حدوث تغيير حقيقي لدى المستفيد.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Visual Triangle -->
+                        <div class="flex-1 flex justify-center items-center py-8 bg-slate-50 rounded-full aspect-square max-w-[400px]">
+                            <div class="triangle-container">
+                                <svg width="320" height="280" viewBox="0 0 320 280">
+                                    <defs>
+                                        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                                            <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.1"/>
+                                        </filter>
+                                    </defs>
+                                    
+                                    <path d="M160 30 L290 250 L30 250 Z" class="triangle-path" fill="white" />
+                                    
+                                    <text x="160" y="170" text-anchor="middle" font-size="18" fill="#0f766e" font-weight="800">التوازن</text>
+
+                                    <!-- Top Node -->
+                                    <g class="triangle-node">
+                                        <circle cx="160" cy="30" r="10" fill="#4f46e5" stroke="white" stroke-width="2" />
+                                        <text x="160" y="20" text-anchor="middle" font-size="12">القيم (الروح)</text>
+                                    </g>
+
+                                    <!-- Right Node -->
+                                    <g class="triangle-node">
+                                        <circle cx="290" cy="250" r="10" fill="#0d9488" stroke="white" stroke-width="2" />
+                                        <text x="290" y="275" text-anchor="middle" font-size="12">النظم (الجسد)</text>
+                                    </g>
+
+                                    <!-- Left Node -->
+                                    <g class="triangle-node">
+                                        <circle cx="30" cy="250" r="10" fill="#d97706" stroke="white" stroke-width="2" />
+                                        <text x="30" y="275" text-anchor="middle" font-size="12">الأثر (الثمرة)</text>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 4: Implementation -->
+                <div id="tab-method" class="tab-content hidden animate-fade-in">
+                    <div class="max-w-3xl mx-auto">
+                        <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">آلية التطبيق المعتمدة</h2>
+                        
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg mb-8">
+                            <p class="text-slate-700 leading-relaxed font-medium">
+                                لضمان دقة النتائج، لا يُنصح بأن يقوم فرد واحد بتعبئة المقياس. الممارسة الفضلى هي تشكيل <strong>"فريق التقييم الذاتي"</strong>.
+                            </p>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-6 text-center mb-8">
+                            <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
+                                <div class="w-14 h-14 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">👑</div>
+                                <h3 class="font-bold text-slate-800">القيادة العليا</h3>
+                                <p class="text-xs text-slate-500 mt-2">المدير التنفيذي / رئيس المجلس</p>
+                            </div>
+                            <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
+                                <div class="w-14 h-14 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">📊</div>
+                                <h3 class="font-bold text-slate-800">مدراء الإدارات</h3>
+                                <p class="text-xs text-slate-500 mt-2">التربوية، الموارد البشرية، الجودة</p>
+                            </div>
+                            <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
+                                <div class="w-14 h-14 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">field</div>
+                                <h3 class="font-bold text-slate-800">الميدانيين</h3>
+                                <p class="text-xs text-slate-500 mt-2">مشرفين تربويين</p>
+                            </div>
+                        </div>
+
+                        <div class="text-center bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                            <span class="font-bold text-yellow-800">💡 طريقة التعبئة:</span>
+                            <span class="text-yellow-900">جلسات عصف ذهني توافقية (Consensus) للاتفاق على الدرجة التي تعكس الواقع بصدق.</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
         <!-- Sticky Dashboard -->
-        <div class="sticky-dashboard bg-white/95 backdrop-blur shadow-lg border-b border-gray-200 py-4 mb-8 -mx-4 px-4 md:rounded-xl md:mx-0 md:top-4 md:border">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="sticky-dashboard bg-white/95 backdrop-blur shadow-lg border-b border-gray-200 py-4 mb-8 -mx-4 px-4 md:rounded-xl md:mx-0 md:top-4 md:border z-50">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                 <div class="flex-1 w-full">
-                    <div class="flex justify-between items-end mb-1">
+                    <div class="flex justify-between items-end mb-2">
                         <span class="text-sm font-bold text-slate-500">النتيجة النهائية الكلية</span>
                         <span class="text-3xl font-bold text-teal-700" id="total-score-display">0 <span class="text-lg text-gray-400 font-normal">/ 180</span></span>
                     </div>
-                    <div class="w-full bg-gray-200 rounded-full h-2.5">
-                        <div id="total-progress" class="bg-teal-600 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                    <div class="w-full bg-gray-200 rounded-full h-3">
+                        <div id="total-progress" class="bg-teal-600 h-3 rounded-full transition-all duration-500" style="width: 0%"></div>
                     </div>
                 </div>
                 
-                <div class="flex-1 w-full text-center md:text-left border-t md:border-t-0 md:border-r border-gray-200 pt-3 md:pt-0 md:pr-4">
-                    <span class="block text-xs text-slate-400 mb-1">مستوى النضج الحالي</span>
-                    <span id="maturity-badge" class="inline-block px-4 py-1 rounded-full bg-gray-100 text-gray-500 font-bold text-sm transition-all duration-300">
-                        بانتظار التقييم
-                    </span>
+                <div class="flex-1 w-full flex items-center justify-between md:justify-end gap-4 border-t md:border-t-0 md:border-r border-gray-200 pt-3 md:pt-0 md:pr-6">
+                    <div class="text-right">
+                        <span class="block text-xs text-slate-400 mb-1">مستوى النضج الحالي</span>
+                        <span id="maturity-badge" class="inline-block px-6 py-2 rounded-full bg-gray-100 text-gray-500 font-bold text-base transition-all duration-300">
+                            بانتظار التقييم
+                        </span>
+                    </div>
+                    <div class="hidden md:block text-xs text-gray-400 max-w-[200px]">
+                        قم بتحريك المؤشرات أدناه بناءً على واقع مؤسستك الحالي
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Scale Guide (Visual Reference) -->
-        <div class="bg-slate-50 rounded-lg p-4 mb-8 text-xs md:text-sm text-slate-600 flex flex-wrap justify-between gap-2 border border-slate-200">
-            <div class="font-bold mb-2 w-full md:w-auto">دليل التقييم (مسطرة القياس):</div>
-            <div class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-red-400 block"></span> (1) غير مفعّل</div>
-            <div class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-orange-400 block"></span> (2) ناشئ</div>
-            <div class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-yellow-400 block"></span> (3) مفعّل</div>
-            <div class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-blue-400 block"></span> (4) مُقاس</div>
-            <div class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-green-500 block"></span> (5) متميز</div>
+        <!-- Scoring Legend -->
+        <div class="bg-slate-50 rounded-lg p-4 mb-8 text-sm text-slate-600 flex flex-wrap justify-center md:justify-between gap-4 border border-slate-200">
+            <div class="font-bold flex items-center gap-2">
+                <svg class="w-5 h-5 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                دليل التقييم (مسطرة القياس):
+            </div>
+            <div class="flex gap-3 flex-wrap justify-center">
+                <div class="flex items-center gap-1 bg-white px-2 py-1 rounded border border-gray-200"><span class="w-3 h-3 rounded-full bg-red-500"></span> (1) غير مفعّل</div>
+                <div class="flex items-center gap-1 bg-white px-2 py-1 rounded border border-gray-200"><span class="w-3 h-3 rounded-full bg-orange-500"></span> (2) ناشئ</div>
+                <div class="flex items-center gap-1 bg-white px-2 py-1 rounded border border-gray-200"><span class="w-3 h-3 rounded-full bg-amber-500"></span> (3) مفعّل</div>
+                <div class="flex items-center gap-1 bg-white px-2 py-1 rounded border border-gray-200"><span class="w-3 h-3 rounded-full bg-blue-500"></span> (4) مُقاس</div>
+                <div class="flex items-center gap-1 bg-white px-2 py-1 rounded border border-gray-200"><span class="w-3 h-3 rounded-full bg-green-600"></span> (5) متميز</div>
+            </div>
         </div>
 
         <!-- Assessment Form Container -->
-        <div id="assessment-container" class="space-y-12">
-            <!-- Content will be injected by JS -->
+        <div id="assessment-container" class="space-y-10">
+            <!-- Content Injected via JS -->
         </div>
 
-        <!-- Analysis & Report Section -->
-        <section id="report-section" class="mt-16 pt-8 border-t-2 border-dashed border-gray-300 hidden">
-            <div class="text-center mb-10">
+        <!-- Report Section -->
+        <section id="report-section" class="mt-20 pt-10 border-t-2 border-dashed border-gray-300 hidden">
+            <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-slate-800 mb-2">تقرير الأداء والتحليل</h2>
                 <p class="text-slate-500">تحليل تلقائي لنقاط القوة وأولويات التحسين بناءً على تقييمك</p>
+            </div>
+
+            <!-- Maturity Explanation Table -->
+            <div class="mb-10 bg-white rounded-xl shadow-sm border border-gray-100 p-6 overflow-hidden">
+                <h3 class="font-bold text-slate-700 mb-6 border-b pb-2 flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    دليل تفسير النتيجة الختامية (مستويات النضج)
+                </h3>
+                <div class="grid md:grid-cols-4 gap-4 text-center text-sm">
+                    <div class="p-4 bg-red-50 rounded-lg border border-red-100 hover:shadow-md transition">
+                        <strong class="block text-red-700 text-lg mb-1">مرحلة التأسيس</strong>
+                        <span class="inline-block bg-white px-2 py-0.5 rounded text-xs font-bold text-red-600 mb-2">أقل من 70 درجة</span>
+                        <p class="text-slate-600 text-xs leading-relaxed">تحتاج المؤسسة إلى مراجعة شاملة للبنية التحتية والأساسية وبناء اللوائح.</p>
+                    </div>
+                    <div class="p-4 bg-orange-50 rounded-lg border border-orange-100 hover:shadow-md transition">
+                        <strong class="block text-orange-700 text-lg mb-1">مرحلة الانطلاق</strong>
+                        <span class="inline-block bg-white px-2 py-0.5 rounded text-xs font-bold text-orange-600 mb-2">من 70 - 125 درجة</span>
+                        <p class="text-slate-600 text-xs leading-relaxed">العمل جيد ومبشر، ولكن يحتاج لتوثيق أكبر وتفعيل أدوات قياس أعمق.</p>
+                    </div>
+                    <div class="p-4 bg-blue-50 rounded-lg border border-blue-100 hover:shadow-md transition">
+                        <strong class="block text-blue-700 text-lg mb-1">مرحلة النضج</strong>
+                        <span class="inline-block bg-white px-2 py-0.5 rounded text-xs font-bold text-blue-600 mb-2">من 126 - 155 درجة</span>
+                        <p class="text-slate-600 text-xs leading-relaxed">أداء عالٍ ومؤسسي مستقر، التركيز القادم يجب أن يكون على الابتكار والاستدامة.</p>
+                    </div>
+                    <div class="p-4 bg-green-50 rounded-lg border border-green-100 hover:shadow-md transition">
+                        <strong class="block text-green-700 text-lg mb-1">مرحلة التميز</strong>
+                        <span class="inline-block bg-white px-2 py-0.5 rounded text-xs font-bold text-green-600 mb-2">أعلى من 155 درجة</span>
+                        <p class="text-slate-600 text-xs leading-relaxed">نموذج ريادي يُحتذى به. حافظ على القمة من خلال نشر المعرفة وقيادة القطاع.</p>
+                    </div>
+                </div>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Strengths -->
                 <div class="bg-gradient-to-br from-green-50 to-white rounded-2xl shadow-sm border border-green-100 p-6">
                     <div class="flex items-center gap-3 mb-6 border-b border-green-100 pb-4">
-                        <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                        <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 shadow-sm">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
                         <h3 class="text-xl font-bold text-green-800">نقاط القوة (التميز)</h3>
                     </div>
-                    <ul id="strengths-list" class="space-y-3">
-                        <li class="text-sm text-gray-500 italic">لا توجد نقاط قوة مسجلة حتى الآن (التقييم 4 أو 5).</li>
-                    </ul>
+                    <ul id="strengths-list" class="space-y-3 min-h-[100px]"></ul>
                 </div>
 
                 <!-- Improvements -->
                 <div class="bg-gradient-to-br from-red-50 to-white rounded-2xl shadow-sm border border-red-100 p-6">
                     <div class="flex items-center gap-3 mb-6 border-b border-red-100 pb-4">
-                        <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600">
+                        <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600 shadow-sm">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                         </div>
                         <h3 class="text-xl font-bold text-red-800">أولويات التحسين (الرؤية التصحيحية)</h3>
                     </div>
-                    <ul id="improvements-list" class="space-y-3">
-                        <li class="text-sm text-gray-500 italic">لا توجد أولويات عاجلة مسجلة (التقييم 1 أو 2).</li>
-                    </ul>
+                    <ul id="improvements-list" class="space-y-3 min-h-[100px]"></ul>
                 </div>
             </div>
 
-            <!-- Print Action -->
-            <div class="mt-12 text-center">
-                <button onclick="window.print()" class="bg-slate-800 text-white px-8 py-3 rounded-full hover:bg-slate-900 transition shadow-lg flex items-center gap-2 mx-auto">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+            <div class="mt-12 text-center pb-12">
+                <button onclick="window.print()" class="bg-slate-800 text-white px-8 py-4 rounded-full hover:bg-slate-900 transition shadow-lg flex items-center gap-3 mx-auto font-bold">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
                     طباعة التقرير والنتائج
                 </button>
             </div>
@@ -247,12 +471,12 @@
 
     </main>
 
-    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-sm mt-auto">
+    <footer class="bg-slate-900 text-slate-400 py-10 text-center text-sm mt-auto border-t border-slate-800">
         <p>مقياس منار للتميز التربوي - كافة الحقوق محفوظة © 2024</p>
     </footer>
 
     <script>
-        // --- Data Structure (Exact Text from Document) ---
+        // --- Data Structure (Matching Updated Guide) ---
         const scaleData = [
             {
                 id: 1,
@@ -300,7 +524,7 @@
                             { id: 14, text: "رصد الاحتياج", desc: "تصميم البرامج بناءً على دراسات واقعية لاحتياجات الفئة المستهدفة وخصائصهم العمرية (لا التقليد)." },
                             { id: 15, text: "الشمولية والعدالة", desc: "تغطية الخدمات لجميع الشرائح المستهدفة بعدالة، ومراعاة الفروق الفردية في التصميم." },
                             { id: 16, text: "تحديد المستهدفات", desc: "وضوح الأهداف السلوكية والتربوية لكل برنامج أو نشاط قبل البدء فيه." },
-                            { id: 17, text: "دمج القيم في التصميم", desc: "القيم ليست 'محاضرة' بل مدمجة في صلب الأنشطة والفعاليات بشكل مقصود ومخطط له." }
+                            { id: 17, text: "دمج القيم في التصميم", desc: "القيم ليست مجرد 'تلقين نظري' بل مدمجة في صلب الأنشطة والفعاليات بشكل مقصود ومخطط له." }
                         ]
                     },
                     {
@@ -363,18 +587,15 @@
             }
         ];
 
-        const state = {}; // Store scores here
+        const state = {}; 
         
-        // --- Initialization ---
         function initApp() {
             const container = document.getElementById('assessment-container');
             
-            // Generate HTML for each domain
             scaleData.forEach(domain => {
                 const domainEl = document.createElement('div');
                 domainEl.className = 'bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden';
                 
-                // Domain Header
                 let colorClass = domain.color === 'blue' ? 'bg-blue-600' : (domain.color === 'teal' ? 'bg-teal-600' : 'bg-indigo-600');
                 
                 domainEl.innerHTML = `
@@ -394,17 +615,12 @@
                 `;
                 container.appendChild(domainEl);
             });
-            
             updateTotalScore();
         }
 
-        // --- HTML Generator for Indicator ---
         function createIndicatorHTML(ind, color) {
-            // Initialize state with 0
             state[ind.id] = 0;
-            
             const accentColor = color === 'blue' ? 'blue' : (color === 'teal' ? 'teal' : 'indigo');
-            
             return `
                 <div class="score-card bg-slate-50 rounded-xl p-5 border border-slate-100">
                     <div class="grid md:grid-cols-12 gap-6 items-center">
@@ -421,18 +637,13 @@
                             <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-100">
                                 <div class="flex justify-between items-center mb-2">
                                     <span class="text-xs font-bold text-slate-400">التقييم</span>
-                                    <span id="val-text-${ind.id}" class="text-xs font-bold px-2 py-1 rounded bg-slate-100 text-slate-500">اختر الدرجة</span>
+                                    <span id="val-text-${ind.id}" class="text-xs font-bold px-2 py-1 rounded bg-slate-100 text-slate-500 transition-all">اختر الدرجة</span>
                                 </div>
                                 <input type="range" min="0" max="5" step="1" value="0" 
                                     class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
-                                    oninput="updateScore(${ind.id}, this.value, '${accentColor}')">
+                                    oninput="updateScore(${ind.id}, this.value)">
                                 <div class="flex justify-between mt-2 text-[10px] text-slate-400 font-medium px-1">
-                                    <span>0</span>
-                                    <span>1</span>
-                                    <span>2</span>
-                                    <span>3</span>
-                                    <span>4</span>
-                                    <span>5</span>
+                                    <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
                                 </div>
                             </div>
                         </div>
@@ -441,80 +652,69 @@
             `;
         }
 
-        // --- Logic: Update Score ---
-        window.updateScore = function(id, value, color) {
+        window.updateScore = function(id, value) {
             value = parseInt(value);
             state[id] = value;
             
-            // Visual Update for Label
             const labelEl = document.getElementById(`val-text-${id}`);
             const labels = [
                 { text: "غير مقيم", class: "bg-slate-100 text-slate-500" },
                 { text: "(1) غير مفعّل", class: "bg-red-100 text-red-700" },
                 { text: "(2) ناشئ", class: "bg-orange-100 text-orange-700" },
-                { text: "(3) مفعّل", class: "bg-yellow-100 text-yellow-700" },
+                { text: "(3) مفعّل", class: "bg-amber-100 text-amber-700" },
                 { text: "(4) مُقاس", class: "bg-blue-100 text-blue-700" },
                 { text: "(5) متميز", class: "bg-green-100 text-green-700" }
             ];
             
             labelEl.textContent = labels[value].text;
-            labelEl.className = `text-xs font-bold px-2 py-1 rounded transition-colors duration-300 ${labels[value].class}`;
+            labelEl.className = `text-xs font-bold px-2 py-1 rounded transition-all duration-300 ${labels[value].class}`;
             
             updateTotalScore();
         }
 
-        // --- Logic: Total Calculation & Maturity ---
         function updateTotalScore() {
             let total = 0;
-            let count = 0; // Count only rated items? No, scale is fixed to 180 max.
-            
-            // Sum all scores
             Object.values(state).forEach(val => total += val);
             
-            // Update Dashboard
             const displayEl = document.getElementById('total-score-display');
             const progressEl = document.getElementById('total-progress');
             const badgeEl = document.getElementById('maturity-badge');
             
-            // Animate Number
             displayEl.innerHTML = `${total} <span class="text-lg text-gray-400 font-normal">/ 180</span>`;
-            
-            // Progress Bar Width
             const percentage = (total / 180) * 100;
             progressEl.style.width = `${percentage}%`;
             
-            // Maturity Logic
             let maturityText = "";
             let maturityClass = "";
             
             if (total === 0) {
                 maturityText = "بانتظار التقييم";
                 maturityClass = "bg-gray-100 text-gray-500";
+                progressEl.className = "h-3 rounded-full transition-all duration-500 bg-gray-200";
             } else if (total < 70) {
                 maturityText = "مرحلة التأسيس";
-                maturityClass = "bg-red-100 text-red-700 ring-2 ring-red-500 ring-opacity-20";
-                progressEl.className = "h-2.5 rounded-full transition-all duration-500 bg-red-500";
+                maturityClass = "bg-red-100 text-red-700 border border-red-200 shadow-sm";
+                progressEl.className = "h-3 rounded-full transition-all duration-500 bg-red-500";
             } else if (total <= 125) {
                 maturityText = "مرحلة الانطلاق";
-                maturityClass = "bg-orange-100 text-orange-700 ring-2 ring-orange-500 ring-opacity-20";
-                progressEl.className = "h-2.5 rounded-full transition-all duration-500 bg-orange-500";
+                maturityClass = "bg-orange-100 text-orange-700 border border-orange-200 shadow-sm";
+                progressEl.className = "h-3 rounded-full transition-all duration-500 bg-orange-500";
             } else if (total <= 155) {
                 maturityText = "مرحلة النضج";
-                maturityClass = "bg-blue-100 text-blue-700 ring-2 ring-blue-500 ring-opacity-20";
-                progressEl.className = "h-2.5 rounded-full transition-all duration-500 bg-blue-500";
+                maturityClass = "bg-blue-100 text-blue-700 border border-blue-200 shadow-sm";
+                progressEl.className = "h-3 rounded-full transition-all duration-500 bg-blue-500";
             } else {
                 maturityText = "مرحلة التميز";
-                maturityClass = "bg-green-100 text-green-700 ring-2 ring-green-500 ring-opacity-20";
-                progressEl.className = "h-2.5 rounded-full transition-all duration-500 bg-green-500";
+                maturityClass = "bg-green-100 text-green-700 border border-green-200 shadow-sm";
+                progressEl.className = "h-3 rounded-full transition-all duration-500 bg-green-500";
             }
             
             badgeEl.textContent = maturityText;
-            badgeEl.className = `inline-block px-4 py-1 rounded-full font-bold text-sm transition-all duration-300 ${maturityClass}`;
+            badgeEl.className = `inline-block px-6 py-2 rounded-full font-bold text-base transition-all duration-300 border ${maturityClass}`;
 
             updateReport();
         }
 
-        // --- Logic: Report Generation ---
         function updateReport() {
             const reportSection = document.getElementById('report-section');
             const strengthsList = document.getElementById('strengths-list');
@@ -530,11 +730,9 @@
             
             reportSection.classList.remove('hidden');
             
-            // Arrays to hold items
             const strengths = [];
             const improvements = [];
             
-            // Iterate Data to find matching scores
             scaleData.forEach(domain => {
                 domain.axes.forEach(axis => {
                     axis.indicators.forEach(ind => {
@@ -548,7 +746,6 @@
                 });
             });
             
-            // Render Strengths
             if (strengths.length > 0) {
                 strengthsList.innerHTML = strengths.map(item => `
                     <li class="flex items-start gap-2 bg-white p-3 rounded border border-green-50">
@@ -560,10 +757,9 @@
                     </li>
                 `).join('');
             } else {
-                strengthsList.innerHTML = '<li class="text-sm text-gray-500 italic p-2">لا توجد نقاط قوة مسجلة حتى الآن (التقييم 4 أو 5).</li>';
+                strengthsList.innerHTML = '<li class="text-sm text-gray-500 italic p-2 flex items-center justify-center h-full">لا توجد نقاط قوة مسجلة حتى الآن (التقييم 4 أو 5).</li>';
             }
             
-            // Render Improvements
             if (improvements.length > 0) {
                 improvementsList.innerHTML = improvements.map(item => `
                     <li class="flex items-start gap-2 bg-white p-3 rounded border border-red-50">
@@ -575,11 +771,29 @@
                     </li>
                 `).join('');
             } else {
-                improvementsList.innerHTML = '<li class="text-sm text-gray-500 italic p-2">لا توجد أولويات عاجلة مسجلة (التقييم 1 أو 2).</li>';
+                improvementsList.innerHTML = '<li class="text-sm text-gray-500 italic p-2 flex items-center justify-center h-full">لا توجد أولويات عاجلة مسجلة (التقييم 1 أو 2).</li>';
             }
         }
 
-        // Init
+        window.switchTab = function(tabId) {
+            // Hide all tabs with fade out effect (simple toggle here)
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            
+            // Show selected tab
+            const selectedTab = document.getElementById(tabId);
+            selectedTab.classList.remove('hidden');
+            
+            // Reset buttons
+            const btnIds = ['btn-tab-def', 'btn-tab-goals', 'btn-tab-phil', 'btn-tab-method'];
+            btnIds.forEach(id => {
+                const btn = document.getElementById(id);
+                btn.className = "tab-btn px-6 py-4 font-medium text-gray-500 hover:bg-gray-50 transition";
+            });
+            
+            // Activate button
+            document.getElementById('btn-'+tabId).className = "tab-btn active px-6 py-4 font-bold text-teal-800 hover:bg-gray-50 transition";
+        }
+
         document.addEventListener('DOMContentLoaded', initApp);
 
     </script>
