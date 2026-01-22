@@ -167,25 +167,21 @@
                         <div>
                             <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center gap-2">
                                 <span class="w-1 h-8 bg-teal-600 rounded-full block"></span>
-                                نطاق العمل
+                                نطاق العمل (المجالات الثلاثة)
                             </h2>
-                            <p class="text-slate-600 mb-4">يغطي المقياس أربعة مجالات حيوية تم دمجها في الهيكلية الحديثة:</p>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:border-teal-500 transition cursor-default">
-                                    <div class="text-teal-600 font-bold mb-1">01 الاستراتيجية</div>
-                                    <div class="text-xs text-slate-500">لضمان التوجه القيمي</div>
+                            <p class="text-slate-600 mb-4">يعتمد المقياس على ثلاثة مجالات رئيسية تتوافق مع الإطار المنطقي للعمليات (مدخلات - عمليات - مخرجات):</p>
+                            <div class="space-y-3">
+                                <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg shadow-sm">
+                                    <div class="text-blue-800 font-bold mb-1">المجال الأول: الممكنات القيادية</div>
+                                    <div class="text-xs text-slate-600">يركز على الأسس والبنية التحتية والمدخلات الاستراتيجية.</div>
                                 </div>
-                                <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:border-teal-500 transition cursor-default">
-                                    <div class="text-teal-600 font-bold mb-1">02 النظم واللوائح</div>
-                                    <div class="text-xs text-slate-500">لضمان الحوكمة التربوية</div>
+                                <div class="p-4 bg-teal-50 border border-teal-200 rounded-lg shadow-sm">
+                                    <div class="text-teal-800 font-bold mb-1">المجال الثاني: العمليات التربوية</div>
+                                    <div class="text-xs text-slate-600">يركز على الممارسات الفعلية ورحلة المستفيد (The Journey).</div>
                                 </div>
-                                <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:border-teal-500 transition cursor-default">
-                                    <div class="text-teal-600 font-bold mb-1">03 العاملين</div>
-                                    <div class="text-xs text-slate-500">لضمان القدوة والكفاءة</div>
-                                </div>
-                                <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:border-teal-500 transition cursor-default">
-                                    <div class="text-teal-600 font-bold mb-1">04 الخدمات</div>
-                                    <div class="text-xs text-slate-500">لضمان جودة الأثر</div>
+                                <div class="p-4 bg-indigo-50 border border-indigo-200 rounded-lg shadow-sm">
+                                    <div class="text-indigo-800 font-bold mb-1">المجال الثالث: النتائج والأثر</div>
+                                    <div class="text-xs text-slate-600">يركز على ما تحقق فعلاً من مخرجات وأثر قيمي ومجتمعي.</div>
                                 </div>
                             </div>
                         </div>
@@ -287,30 +283,25 @@
                                         </filter>
                                     </defs>
                                     
-                                    <!-- Updated Coordinates to prevent text clipping -->
                                     <path d="M160 45 L270 225 L50 225 Z" class="triangle-path" fill="white" />
                                     
-                                    <!-- Center Text -->
                                     <text x="160" y="165" text-anchor="middle" font-size="18" fill="#0f766e" font-weight="800">التوازن</text>
 
                                     <!-- Top Node: Values -->
                                     <g class="triangle-node">
                                         <circle cx="160" cy="45" r="10" fill="#4f46e5" stroke="white" stroke-width="2" />
-                                        <!-- Text moved up -->
                                         <text x="160" y="25" text-anchor="middle" font-size="13">القيم (الروح)</text>
                                     </g>
 
                                     <!-- Right Node: Systems -->
                                     <g class="triangle-node">
                                         <circle cx="270" cy="225" r="10" fill="#0d9488" stroke="white" stroke-width="2" />
-                                        <!-- Text moved down and slightly left to avoid clip -->
                                         <text x="270" y="255" text-anchor="middle" font-size="13">النظم (الجسد)</text>
                                     </g>
 
                                     <!-- Left Node: Impact -->
                                     <g class="triangle-node">
                                         <circle cx="50" cy="225" r="10" fill="#d97706" stroke="white" stroke-width="2" />
-                                        <!-- Text moved down -->
                                         <text x="50" y="255" text-anchor="middle" font-size="13">الأثر (الثمرة)</text>
                                     </g>
                                 </svg>
@@ -364,7 +355,7 @@
                 <div class="flex-1 w-full">
                     <div class="flex justify-between items-end mb-2">
                         <span class="text-sm font-bold text-slate-500">النتيجة النهائية الكلية</span>
-                        <span class="text-3xl font-bold text-teal-700" id="total-score-display">0 <span class="text-lg text-gray-400 font-normal">/ 180</span></span>
+                        <span class="text-3xl font-bold text-teal-700" id="total-score-display">0 <span class="text-lg text-gray-400 font-normal">/ 240</span></span>
                     </div>
                     <div class="w-full bg-gray-200 rounded-full h-3">
                         <div id="total-progress" class="bg-teal-600 h-3 rounded-full transition-all duration-500" style="width: 0%"></div>
@@ -421,22 +412,22 @@
                 <div class="grid md:grid-cols-4 gap-4 text-center text-sm">
                     <div class="p-4 bg-red-50 rounded-lg border border-red-100 hover:shadow-md transition">
                         <strong class="block text-red-700 text-lg mb-1">مرحلة التأسيس</strong>
-                        <span class="inline-block bg-white px-2 py-0.5 rounded text-xs font-bold text-red-600 mb-2">أقل من 70 درجة</span>
+                        <span class="inline-block bg-white px-2 py-0.5 rounded text-xs font-bold text-red-600 mb-2">أقل من 90 درجة</span>
                         <p class="text-slate-600 text-xs leading-relaxed">تحتاج المؤسسة إلى مراجعة شاملة للبنية التحتية والأساسية وبناء اللوائح.</p>
                     </div>
                     <div class="p-4 bg-orange-50 rounded-lg border border-orange-100 hover:shadow-md transition">
                         <strong class="block text-orange-700 text-lg mb-1">مرحلة الانطلاق</strong>
-                        <span class="inline-block bg-white px-2 py-0.5 rounded text-xs font-bold text-orange-600 mb-2">من 70 - 125 درجة</span>
+                        <span class="inline-block bg-white px-2 py-0.5 rounded text-xs font-bold text-orange-600 mb-2">من 91 - 160 درجة</span>
                         <p class="text-slate-600 text-xs leading-relaxed">العمل جيد ومبشر، ولكن يحتاج لتوثيق أكبر وتفعيل أدوات قياس أعمق.</p>
                     </div>
                     <div class="p-4 bg-blue-50 rounded-lg border border-blue-100 hover:shadow-md transition">
                         <strong class="block text-blue-700 text-lg mb-1">مرحلة النضج</strong>
-                        <span class="inline-block bg-white px-2 py-0.5 rounded text-xs font-bold text-blue-600 mb-2">من 126 - 155 درجة</span>
+                        <span class="inline-block bg-white px-2 py-0.5 rounded text-xs font-bold text-blue-600 mb-2">من 161 - 205 درجة</span>
                         <p class="text-slate-600 text-xs leading-relaxed">أداء عالٍ ومؤسسي مستقر، التركيز القادم يجب أن يكون على الابتكار والاستدامة.</p>
                     </div>
                     <div class="p-4 bg-green-50 rounded-lg border border-green-100 hover:shadow-md transition">
                         <strong class="block text-green-700 text-lg mb-1">مرحلة التميز</strong>
-                        <span class="inline-block bg-white px-2 py-0.5 rounded text-xs font-bold text-green-600 mb-2">أعلى من 155 درجة</span>
+                        <span class="inline-block bg-white px-2 py-0.5 rounded text-xs font-bold text-green-600 mb-2">أعلى من 205 درجة</span>
                         <p class="text-slate-600 text-xs leading-relaxed">نموذج ريادي يُحتذى به. حافظ على القمة من خلال نشر المعرفة وقيادة القطاع.</p>
                     </div>
                 </div>
@@ -481,7 +472,6 @@
     </footer>
 
     <script>
-        // --- Data Structure (Matching Updated Guide) ---
         const scaleData = [
             {
                 id: 1,
@@ -491,29 +481,36 @@
                     {
                         title: "المحور (1-1): التوجه الاستراتيجي والحوكمة",
                         indicators: [
-                            { id: 1, text: "وضوح الرؤية والالتزام بها", desc: "الرؤية التربوية معلنة ومكتوبة، ويستوعبها جميع العاملين، مع وجود التزام عاطفي وعملي بها (ليست شعارات فقط)." },
-                            { id: 2, text: "المواءمة الاستراتيجية", desc: "الرسالة والأهداف الاستراتيجية مرتبطة بشكل مباشر بالأهداف التربوية والقيمية الكبرى للجهة." },
-                            { id: 3, text: "التخطيط التشغيلي", desc: "وجود خطة سنوية موثقة تتضمن برامج محددة، ميزانيات، وجداول زمنية متوافقة مع الاستراتيجية." },
-                            { id: 4, text: "اللوائح والسياسات", desc: "وجود لوائح مكتوبة تنظم العمل التربوي (وليس الإداري فقط)، تحدد الصلاحيات والمسؤوليات بدقة." },
-                            { id: 5, text: "المرونة وإدارة المخاطر", desc: "قدرة الخطة والنظام الإداري على استيعاب المتغيرات الطارئة والتعامل مع الأزمات (Risk-Based Thinking)." }
+                            { id: 1, text: "الخطة الاستراتيجية", desc: "اكتمال عناصر الخطة الاستراتيجية (الرؤية، الرسالة، الأهداف، المؤشرات، المستهدفات، المبادرات) ووضوحها." },
+                            { id: 2, text: "الالتزام بالخطة", desc: "الالتزام بتنفيذ ومتابعة الخطة الاستراتيجية المعتمدة." },
+                            { id: 3, text: "إدارة الأداء", desc: "وجود نظام فعال لقياس الأداء المؤسسي ومتابعة المؤشرات." },
+                            { id: 4, text: "المواءمة الاستراتيجية", desc: "الرسالة والأهداف الاستراتيجية مرتبطة بشكل مباشر بالأهداف التربوية والقيمية الكبرى للجهة." },
+                            { id: 5, text: "التخطيط التشغيلي", desc: "وجود خطة سنوية موثقة تتضمن برامج محددة، ميزانيات، وجداول زمنية متوافقة مع الاستراتيجية." },
+                            { id: 6, text: "اللوائح والسياسات", desc: "وجود لوائح مكتوبة تنظم العمل التربوي (وليس الإداري فقط)، تحدد الصلاحيات والمسؤوليات بدقة." },
+                            { id: 7, text: "المرونة وإدارة المخاطر", desc: "وجود نظام أو خطة لإدارة المخاطر والتعامل مع الأزمات والطوارئ." }
                         ]
                     },
                     {
                         title: "المحور (1-2): إدارة رأس المال البشري",
                         indicators: [
-                            { id: 6, text: "التأسيس والتهيئة", desc: "وجود برنامج (Induction) منهجي لتأهيل الموظفين والمربين الجدد قبل استلام مهامهم." },
-                            { id: 7, text: "التدريب والتطوير المستمر", desc: "تنفيذ برامج تدريبية دورية لسد الفجوات المهارية والتربوية لدى العاملين (فنية/سلوكية)." },
-                            { id: 8, text: "نقل المعرفة والتعاقب", desc: "وجود آلية منظمة لانتقال الخبرات من القدامى للجدد، وتوفر صف ثاني من القيادات التربوية." },
-                            { id: 9, text: "التمكين والدعم", desc: "دعم المؤسسة للعاملين في مسار التعلم الذاتي، وتوفير الموارد التي تعينهم على أداء مهامهم." }
+                            { id: 8, text: "الاستقطاب واختيار المرشحين", desc: "وجود معايير واضحة تركز على السمات التربوية والالتزام القيمي للمرشحين قبل التعيين." },
+                            { id: 9, text: "التأسيس والتهيئة", desc: "وجود برنامج (Induction) منهجي لتأهيل الموظفين والمربين الجدد قبل استلام مهامهم." },
+                            { id: 10, text: "تنفيذ البرامج التدريبية", desc: "تنفيذ برامج تدريبية دورية للعاملين." },
+                            { id: 11, text: "سد الفجوات", desc: "سد الفجوات المهارية والتربوية لدى العاملين." },
+                            { id: 12, text: "نقل المعرفة", desc: "وجود آلية منظمة لانتقال الخبرات والمعرفة الضمنية من القدامى للجدد." },
+                            { id: 13, text: "التعاقب القيادي", desc: "توفر خطط لإعداد وتأهيل صف ثاني من القيادات التربوية." },
+                            { id: 14, text: "التمكين والتعلم", desc: "دعم المؤسسة للعاملين في مسار التعلم الذاتي والتطوير المهني." },
+                            { id: 15, text: "توفير الموارد المساندة", desc: "توفير الموارد والأدوات التي تعين العاملين على أداء مهامهم بكفاءة." }
                         ]
                     },
                     {
                         title: "المحور (1-3): الثقافة المؤسسية والقيمية",
                         indicators: [
-                            { id: 10, text: "القيادة بالقدوة", desc: "تمثّل القيادات والعاملين للقيم المؤسسية في سلوكهم اليومي وقراراتهم (التطابق بين القول والعمل)." },
-                            { id: 11, text: "المرجعية القيمية", desc: "وضوح المرجعية القيمية والأخلاقية التي يحتكم إليها الجميع عند الاختلاف أو اتخاذ القرار." },
-                            { id: 12, text: "اللغة المشتركة", desc: "شيوع مصطلحات ومفاهيم تربوية موحدة (لغة مشتركة) تسهل التفاهم بين فرق العمل." },
-                            { id: 13, text: "البيئة المحفزة", desc: "وجود بيئة علاقات داخلية صحية تحفز على العطاء، الاحترام المتبادل، والعمل بروح الفريق." }
+                            { id: 16, text: "اللوائح القيمية", desc: "وجود ميثاق أخلاقي أو لوائح قيمية منظمة للعمل ومُعلنة." },
+                            { id: 17, text: "الالتزام القيمي للقادة", desc: "امتثال القيادات للقيم المؤسسية في سلوكهم وقراراتهم (القدوة)." },
+                            { id: 18, text: "دليل المصطلحات", desc: "وجود دليل أو مسرد للمصطلحات التربوية." },
+                            { id: 19, text: "استخدام المصطلحات", desc: "استخدام المصطلحات التربوية المعتمدة في التقارير والأدلة." },
+                            { id: 20, text: "تحفيز العاملين", desc: "توفر منهجية مكتملة لتحفيز العاملين." }
                         ]
                     }
                 ]
@@ -526,27 +523,31 @@
                     {
                         title: "المحور (2-1): تصميم وتخطيط البرامج",
                         indicators: [
-                            { id: 14, text: "رصد الاحتياج", desc: "تصميم البرامج بناءً على دراسات واقعية لاحتياجات الفئة المستهدفة وخصائصهم العمرية (لا التقليد)." },
-                            { id: 15, text: "الشمولية والعدالة", desc: "تغطية الخدمات لجميع الشرائح المستهدفة بعدالة، ومراعاة الفروق الفردية في التصميم." },
-                            { id: 16, text: "تحديد المستهدفات", desc: "وضوح الأهداف السلوكية والتربوية لكل برنامج أو نشاط قبل البدء فيه." },
-                            { id: 17, text: "دمج القيم في التصميم", desc: "القيم ليست مجرد 'تلقين نظري' بل مدمجة في صلب الأنشطة والفعاليات بشكل مقصود ومخطط له." }
+                            { id: 21, text: "منهجية التخطيط", desc: "الالتزام بمنهجية تخطيط محكمة عند تصميم البرامج والمشاريع." },
+                            { id: 22, text: "رصد الاحتياج", desc: "تصميم البرامج بناءً على دراسات واقعية لاحتياجات الفئة المستهدفة." },
+                            { id: 23, text: "شمولية الخدمة", desc: "تغطية الخدمات لجميع الشرائح المستهدفة بعدالة." },
+                            { id: 24, text: "مراعاة الفروق الفردية", desc: "تصميم البرامج والأنشطة بما يراعي الفروق الفردية بين المستفيدين." },
+                            { id: 25, text: "الأهداف السلوكية", desc: "صياغة أهداف سلوكية وتربوية قابلة للقياس لكل نشاط." },
+                            { id: 26, text: "دمج القيم في التصميم", desc: "دمج القيم في صلب الأنشطة والفعاليات بشكل مقصود ومخطط له." }
                         ]
                     },
                     {
-                        title: "المحور (2-2): جودة التنفيذ والبيئة",
+                        title: "المحور (2-2): البيئة التربوية",
                         indicators: [
-                            { id: 18, text: "بيئة التعلم الآمنة", desc: "توفر بيئة (مادية/رقمية) تحقق الأمان النفسي والجسدي للمستفيد، وتكون جاذبة ومحفزة." },
-                            { id: 19, text: "كفاءة الموارد", desc: "توفر الموارد المالية واللوجستية الكافية لتنفيذ البرامج بالجودة المطلوبة وعدم تعثرها." },
-                            { id: 20, text: "الانضباط المعياري", desc: "التزام المنفذين بالخطط الزمنية والمعايير التربوية المعتمدة في دليل البرنامج." },
-                            { id: 21, text: "خلو الموانع", desc: "خلو البرامج والمحتوى المقدم من أي ممارسات أو رسائل تتنافى مع القيم والهوية." }
+                            { id: 27, text: "معايير البيئة التربوية", desc: "وجود معايير وضوابط معلنة لضمان سلامة البيئة التربوية (المادية والرقمية)." },
+                            { id: 28, text: "خلو الموانع", desc: "خلو البرامج من الممارسات والرسائل التي تتنافى مع القيم والهوية." }
                         ]
                     },
                     {
-                        title: "المحور (2-3): الرقابة وضمان الجودة",
+                        title: "المحور (2-3): جودة التنفيذ والرقابة",
                         indicators: [
-                            { id: 22, text: "أدوات القياس", desc: "وجود أدوات علمية واضحة (استبانات، ملاحظة، اختبارات) لاختبار جودة المخرجات." },
-                            { id: 23, text: "التقارير المبنية على البيانات", desc: "انتظام رفع التقارير الفنية والتربوية التي تعتمد على بيانات وأرقام حقيقية تعكس واقع التنفيذ بشفافية." },
-                            { id: 24, text: "التصحيح الفوري", desc: "وجود آلية سريعة لمعالجة الملاحظات والأخطاء التي تظهر أثناء التنفيذ وعدم ترحيلها." }
+                            { id: 29, text: "تصميم العمليات التربوية", desc: "وجود وصف واضح وموثق للعمليات والمسارات التربوية." },
+                            { id: 30, text: "كفاءة الموارد", desc: "الاستخدام الأمثل للموارد المالية واللوجستية لتنفيذ البرامج بالجودة المطلوبة." },
+                            { id: 31, text: "الالتزام بالخطط الزمنية", desc: "التزام المنفذين بالخطط الزمنية المعتمدة." },
+                            { id: 32, text: "الالتزام بالمعايير التربوية", desc: "التزام المنفذين بالمعايير التربوية المعتمدة في الأدلة." },
+                            { id: 33, text: "قياس المخرجات التربوية", desc: "استخدام أدوات قياس محددة وعلمية لرصد نمو المخرجات التربوية." },
+                            { id: 34, text: "دقة وانتظام التقارير", desc: "انتظام رفع التقارير الفنية والتربوية بدقة وشفافية." },
+                            { id: 35, text: "معالجة الفجوات", desc: "وجود آلية فعالة لمعالجة الملاحظات والأخطاء التي تظهر أثناء التنفيذ." }
                         ]
                     }
                 ]
@@ -559,33 +560,34 @@
                     {
                         title: "المحور (3-1): الأثر التربوي والسلوكي",
                         indicators: [
-                            { id: 25, text: "التغير السلوكي (Outcome)", desc: "توفر شواهد تثبت تحسن سلوكيات أو مهارات المستفيدين كنتيجة مباشرة للبرامج." },
-                            { id: 26, text: "تحقيق الأهداف", desc: "نسبة تحقق الأهداف التربوية المخطط لها مسبقاً (مقارنة المستهدف بالمحقق)." },
-                            { id: 27, text: "تعزيز القيم", desc: "مدى رسوخ القيم المستهدفة لدى المستفيدين وظهورها في تعاملاتهم." }
+                            { id: 36, text: "منهجية التأثير التربوي", desc: "وجود منهجية واضحة لصناعة الأثر والتغيير التربوي." },
+                            { id: 37, text: "التغير السلوكي (Outcome)", desc: "تحسن السلوكيات أو المهارات المستهدفة لدى المستفيدين كنتيجة للبرامج التربوية." },
+                            { id: 38, text: "تحقيق الأهداف", desc: "مستوى تحقق الأهداف التربوية المخطط لها مسبقاً." },
+                            { id: 39, text: "تعزيز القيم", desc: "تمثل المستفيدين للقيم المستهدفة في سلوكهم وممارساتهم اليومية." }
                         ]
                     },
                     {
                         title: "المحور (3-2): رضا المعنيين",
                         indicators: [
-                            { id: 28, text: "قياس الرضا", desc: "قياس رضا (المستفيدين، أولياء الأمور، المجتمع) بشكل دوري ومنهجي موثق." },
-                            { id: 29, text: "الاستجابة للملاحظات", desc: "وجود قنوات فعالة للشكاوى والمقترحات، واستخدامها فعلياً في تطوير البرامج (Feedback Loops)." },
-                            { id: 30, text: "استمرار الولاء", desc: "نسبة استمرار المستفيدين في برامج الجهة، وتفاعلهم مع أنشطتها المستقبلية." }
+                            { id: 40, text: "قياس رضا المستفيدين", desc: "قياس رضا المستفيدين وأولياء الأمور والمجتمع بشكل دوري ومنهجي." },
+                            { id: 41, text: "تفعيل الشكاوى والمقترحات", desc: "تفعيل نتائج دراسة الشكاوى والمقترحات في عمليات التطوير والتحسين." },
+                            { id: 42, text: "استدامة العلاقة مع المستفيد", desc: "تفاعل المستفيدين مع برامج الجهة واستمرار ولائهم." }
                         ]
                     },
                     {
                         title: "المحور (3-3): الاستدامة والابتكار",
                         indicators: [
-                            { id: 31, text: "الابتكار في الخدمات", desc: "تقديم مبادرات وحلول تربوية إبداعية غير تقليدية تواكب لغة العصر." },
-                            { id: 32, text: "التطوير المستمر", desc: "إدخال تحسينات دورية على الخدمات بناءً على نتائج القياس والتقييم." },
-                            { id: 33, text: "الاستدامة المالية/الإدارية", desc: "وجود خطط تضمن استمرار البرامج الناجحة وعدم توقفها بانتهاء التمويل المؤقت." },
-                            { id: 34, text: "استدامة الأثر", desc: "استمرار أثر البرامج في حياة المستفيدين حتى بعد انتهاء علاقتهم المباشرة بالجهة." }
+                            { id: 43, text: "الحلول التربوية الإبداعية", desc: "توفر حلول إبداعية لتلبية الاحتياجات التربوية المتجددة للمستفيدين." },
+                            { id: 44, text: "التطوير المستمر", desc: "تعديل وتطوير البرامج والخدمات بناءً على التقارير الفنية." },
+                            { id: 45, text: "استدامة البرامج النوعية", desc: "وجود خطط تضمن استمرار البرامج الناجحة بغض النظر عن التمويل المالي المؤقت." },
+                            { id: 46, text: "استدامة الأثر القيمي", desc: "تحقق استدامة الأثر القيمي في سلوك المستفيدين بعد انتهاء البرنامج." }
                         ]
                     },
                     {
                         title: "المحور (3-4): العائد المجتمعي",
                         indicators: [
-                            { id: 35, text: "السمعة المؤسسية", desc: "تقدير المجتمع المحلي للدور التربوي الذي تقوم به الجهة." },
-                            { id: 36, text: "نشر المعرفة", desc: "مساهمة الجهة في نشر الممارسات الإيجابية أو نقل تجربتها لجهات أخرى ووجود الشراكات الفاعلة." }
+                            { id: 47, text: "الشراكات التربوية", desc: "نمو الشراكات والتعاونات مع الجهات ذات العلاقة بالعمل التربوي." },
+                            { id: 48, text: "نشر الممارسات الإيجابية", desc: "مساهمة الجهة في نشر الممارسات والتجارب التربوية الناجحة مجتمعياً." }
                         ]
                     }
                 ]
@@ -685,26 +687,29 @@
             const progressEl = document.getElementById('total-progress');
             const badgeEl = document.getElementById('maturity-badge');
             
-            displayEl.innerHTML = `${total} <span class="text-lg text-gray-400 font-normal">/ 180</span>`;
-            const percentage = (total / 180) * 100;
+            const maxScore = 48 * 5; // 240
+            displayEl.innerHTML = `${total} <span class="text-lg text-gray-400 font-normal">/ ${maxScore}</span>`;
+            const percentage = (total / maxScore) * 100;
             progressEl.style.width = `${percentage}%`;
             
             let maturityText = "";
             let maturityClass = "";
             
+            // Adjusted thresholds based on 240 total
+            // < 37.5% (~90) | 37.5%-66% (90-160) | 66%-85% (160-205) | > 85% (205)
             if (total === 0) {
                 maturityText = "بانتظار التقييم";
                 maturityClass = "bg-gray-100 text-gray-500";
                 progressEl.className = "h-3 rounded-full transition-all duration-500 bg-gray-200";
-            } else if (total < 70) {
+            } else if (total < 90) {
                 maturityText = "مرحلة التأسيس";
                 maturityClass = "bg-red-100 text-red-700 border border-red-200 shadow-sm";
                 progressEl.className = "h-3 rounded-full transition-all duration-500 bg-red-500";
-            } else if (total <= 125) {
+            } else if (total <= 160) {
                 maturityText = "مرحلة الانطلاق";
                 maturityClass = "bg-orange-100 text-orange-700 border border-orange-200 shadow-sm";
                 progressEl.className = "h-3 rounded-full transition-all duration-500 bg-orange-500";
-            } else if (total <= 155) {
+            } else if (total <= 205) {
                 maturityText = "مرحلة النضج";
                 maturityClass = "bg-blue-100 text-blue-700 border border-blue-200 shadow-sm";
                 progressEl.className = "h-3 rounded-full transition-all duration-500 bg-blue-500";
@@ -781,21 +786,16 @@
         }
 
         window.switchTab = function(tabId) {
-            // Hide all tabs with fade out effect (simple toggle here)
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            
-            // Show selected tab
             const selectedTab = document.getElementById(tabId);
             selectedTab.classList.remove('hidden');
             
-            // Reset buttons
             const btnIds = ['btn-tab-def', 'btn-tab-goals', 'btn-tab-phil', 'btn-tab-method'];
             btnIds.forEach(id => {
                 const btn = document.getElementById(id);
                 btn.className = "tab-btn px-6 py-4 font-medium text-gray-500 hover:bg-gray-50 transition";
             });
             
-            // Activate button
             document.getElementById('btn-'+tabId).className = "tab-btn active px-6 py-4 font-bold text-teal-800 hover:bg-gray-50 transition";
         }
 
